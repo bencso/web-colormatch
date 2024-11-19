@@ -19,6 +19,11 @@ body main {
   align-items: center;
   gap: 2rem;
 }
+@media screen and (max-width: 768px) {
+  body main {
+    flex-direction: column;
+  }
+}
 body main .meaning,
 body main .color {
   display: flex;
@@ -64,8 +69,18 @@ body main .arrows-yes, body main .arrows-no {
   font-size: 1.5rem;
   padding: 0rem 1rem;
 }
+@media screen and (max-width: 768px) {
+  body main .arrows-yes, body main .arrows-no {
+    font-size: 1rem;
+  }
+}
 body main .arrows-yes svg, body main .arrows-no svg {
   font-size: 2rem;
+}
+@media screen and (max-width: 768px) {
+  body main .arrows-yes svg, body main .arrows-no svg {
+    font-size: 1.5rem;
+  }
 }
 body main .arrows-yes {
   border-left: 1px solid grey;
