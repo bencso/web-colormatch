@@ -42,6 +42,7 @@ body main .color__card {
   padding: 0 5rem;
   font-size: 4rem;
   text-transform: lowercase;
+  min-width: 300px;
 }
 body main .meaning-tooltip,
 body main .color-tooltip {
@@ -87,4 +88,46 @@ body main .arrows-yes {
 }
 body main .arrows-no {
   border-right: 1px solid grey;
+}
+body .overlay__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 1000;
+}
+body .overlay__menu h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: lowercase;
+}
+body .overlay__menu-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: 1px solid darkslategrey;
+}
+@media screen and (max-width: 768px) {
+  body .overlay__menu-button {
+    font-size: 1rem;
+  }
+}
+body .overlay__menu-button svg {
+  font-size: 2rem;
+}
+@media screen and (max-width: 768px) {
+  body .overlay__menu-button svg {
+    font-size: 1.5rem;
+  }
 }/*# sourceMappingURL=main.css.map */
