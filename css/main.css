@@ -1,6 +1,6 @@
 body {
   background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,10 +18,77 @@ body main {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  transition: all 0.3s ease;
 }
 @media screen and (max-width: 768px) {
   body main {
     flex-direction: column;
+    padding: 1rem;
+  }
+}
+body main .header {
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 0rem 2rem;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  body main .header {
+    padding: 0.5rem 1rem;
+  }
+}
+body main .header div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0rem 2rem;
+}
+@media screen and (max-width: 768px) {
+  body main .header div {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+body main .header div .header__timer, body main .header div .header__score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+body main .header div .header__timer #timer, body main .header div .header__timer #score, body main .header div .header__score #timer, body main .header div .header__score #score {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ff6a6a;
+}
+@media screen and (max-width: 768px) {
+  body main .header div .header__timer #timer, body main .header div .header__timer #score, body main .header div .header__score #timer, body main .header div .header__score #score {
+    font-size: 1.5rem;
+  }
+}
+body main .header div .header__buttons button {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid #ffb56a;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #ffb56a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+body main .header div .header__buttons button:hover {
+  background-color: #ffb56a;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  body main .header div .header__buttons button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 }
 body main .meaning,
@@ -39,10 +106,24 @@ body main .color__card {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 0 5rem;
-  font-size: 4rem;
+  padding: 2rem;
+  font-size: 2rem;
   text-transform: lowercase;
   min-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body main .meaning__card:hover,
+body main .color__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 768px) {
+  body main .meaning__card,
+  body main .color__card {
+    font-size: 1.5rem;
+    padding: 1rem;
+    min-width: 200px;
+  }
 }
 body main .meaning-tooltip,
 body main .color-tooltip {
@@ -50,8 +131,39 @@ body main .color-tooltip {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.5215686275);
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 2rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 768px) {
+  body main .meaning-tooltip,
+  body main .color-tooltip {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+}
+body main .meaning-tooltip::after,
+body main .color-tooltip::after {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 1rem;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+@media screen and (max-width: 768px) {
+  body main .meaning-tooltip::after,
+  body main .color-tooltip::after {
+    top: -1rem;
+    border-width: 0.5rem;
+  }
 }
 body main .arrows {
   display: flex;
@@ -59,20 +171,46 @@ body main .arrows {
   justify-content: center;
   position: fixed;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.5215686275);
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 100%;
+  font-size: 1rem;
+}
+@media screen and (max-width: 768px) {
+  body main .arrows {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+}
+body main .arrows-yes {
+  border-left: 1px solid grey;
+}
+body main .arrows-yes.highlight {
+  background-color: #9cff6a;
+  color: #fff;
+}
+body main .arrows-no {
+  border-right: 1px solid grey;
+}
+body main .arrows-no.highlight {
+  background-color: #ff6a6a;
+  color: #fff;
 }
 body main .arrows-yes, body main .arrows-no {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  padding: 0rem 1rem;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+body main .arrows-yes:hover, body main .arrows-no:hover {
+  background-color: #f0f0f0;
 }
 @media screen and (max-width: 768px) {
   body main .arrows-yes, body main .arrows-no {
-    font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 }
 body main .arrows-yes svg, body main .arrows-no svg {
@@ -83,13 +221,28 @@ body main .arrows-yes svg, body main .arrows-no svg {
     font-size: 1.5rem;
   }
 }
-body main .arrows-yes {
+body main svg {
+  font-size: 2rem;
+}
+@media screen and (max-width: 768px) {
+  body main svg {
+    font-size: 1.5rem;
+  }
+}
+body-yes {
   border-left: 1px solid grey;
 }
-body main .arrows-no {
+body-yes.highlight {
+  background-color: #b0ff6a;
+}
+body-no {
   border-right: 1px solid grey;
 }
-body .overlay__menu {
+body-no.highlight {
+  background-color: #ff6a6a;
+}
+
+.overlay__menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,12 +256,17 @@ body .overlay__menu {
   background-color: #ffffff;
   z-index: 1000;
 }
-body .overlay__menu h1 {
+.overlay__menu h1 {
   font-size: 3rem;
   font-weight: 900;
   text-transform: lowercase;
 }
-body .overlay__menu-button {
+@media screen and (max-width: 768px) {
+  .overlay__menu h1 {
+    font-size: 2rem;
+  }
+}
+.overlay__menu-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -119,15 +277,16 @@ body .overlay__menu-button {
   border: 1px solid darkslategrey;
 }
 @media screen and (max-width: 768px) {
-  body .overlay__menu-button {
+  .overlay__menu-button {
     font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 }
-body .overlay__menu-button svg {
+.overlay__menu-button svg {
   font-size: 2rem;
 }
 @media screen and (max-width: 768px) {
-  body .overlay__menu-button svg {
+  .overlay__menu-button svg {
     font-size: 1.5rem;
   }
 }/*# sourceMappingURL=main.css.map */
